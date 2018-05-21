@@ -7,3 +7,9 @@
 3. Jason Lee
 4. Kishan Patel
 5. Federich Tsou
+
+### Task List
+- [x] Parsed game data into .json files @kishanpatel97
+- [x]
+- [x]
+- [x]
