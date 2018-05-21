@@ -10,6 +10,6 @@
 
 ### Task List
 - [x] Parsed game data into .json files @kishanpatel97
-- [x]
-- [x]
-- [x]
+- [ ] Task 2
+- [ ] Task 3
+- [ ] Task 4
