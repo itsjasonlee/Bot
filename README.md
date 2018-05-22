@@ -1,4 +1,4 @@
-# Project Zerg: Early Game Victory
+# Bot : Data Analysis of Professional Games
 ## ECS170, Spring 2018
 
 ### Group Members
