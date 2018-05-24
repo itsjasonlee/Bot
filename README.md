@@ -13,3 +13,8 @@
 - [ ] Task 2
 - [ ] Task 3
 - [ ] Task 4
+
+### To Do
+Create a HTML website for the final report. A layout that supports @Whomever is doing the final website
+Create more counter to preprocess the data for the rest of the visualization
+Create some of the Vis's @Michael Chan
