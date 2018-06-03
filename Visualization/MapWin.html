@@ -4,7 +4,7 @@
 <script src='./scripts/d3.v4.min.js'></script>
 <title> Bot : Data Analysis of Professional Games </title>
 
-<body>    
+<body>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="APM Correlations.html">APM Correlations</a></li>
@@ -14,13 +14,22 @@
     </ul>
     <br>
     <header>
-        <h2> Race Win Overall </h2>
+        <h2> Race Win By Map </h2>
     </header>
     <div class = "container-fluid">
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <br>
+        <form>
+            <label><input type="radio" name="dataset" id="dataset" checked="checked" value="Abyssal" > Abyssal Reef </label>
+            <label><input type="radio" name="dataset" id="dataset" value="Acolyte"> Acolyte Le</label>
+            <label><input type="radio" name="dataset" id="dataset" value="Ascension"> Ascension to Aiur </label>
+            <label><input type="radio" name="dataset" id="dataset" value="Catallena" > Catallena LE </label>
+            <label><input type="radio" name="dataset" id="dataset" value="Interloper"> Interloper LE</label>
+            <label><input type="radio" name="dataset" id="dataset" value="Mech"> Mech Depot LE</label>
+            <label><input type="radio" name="dataset" id="dataset" value="Odyssey"> Odyssey LE</label>
+        </form>
         <svg height="650"></svg>
         <p> Anaysis of the data</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
@@ -70,24 +79,99 @@
         .range(colorRange.range());
 
      //Data from RaceWinRate data processor.
-     Overall = [
-            {label:"Terran win over Zerg", value:13.88}, 
-            {label:"Terran win over Protoss", value:20.05}, 
-            {label:"Protoss win over Terran", value:19.25},
-            {label:"Protoss win over Zerg", value:16.67},
-            {label:"Zerg win over Terran", value:16.81},
-            {label:"Zerg win over Protoss", value:13.35}
+    Abyssal = [
+            {label:"Terran win over Zerg", value:13.82}, 
+            {label:"Terran win over Protoss", value:19.91}, 
+            {label:"Protoss win over Terran", value:19.77},
+            {label:"Protoss win over Zerg", value:16.82},
+            {label:"Zerg win over Terran", value:15.93},
+            {label:"Zerg win over Protoss", value:13.75}
         ];
+
+    Acolyte = [
+            {label:"Terran win over Zerg", value:12.47}, 
+            {label:"Terran win over Protoss", value:18.87}, 
+            {label:"Protoss win over Terran", value:19.91},
+            {label:"Protoss win over Zerg", value:17.33},
+            {label:"Zerg win over Terran", value:17.55},
+            {label:"Zerg win over Protoss", value:13.86}
+        ];
+
+    Ascension = [
+            {label:"Terran win over Zerg", value:14.13}, 
+            {label:"Terran win over Protoss", value:21.01}, 
+            {label:"Protoss win over Terran", value:18.35},
+            {label:"Protoss win over Zerg", value:16.26},
+            {label:"Zerg win over Terran", value:17.18},
+            {label:"Zerg win over Protoss", value:13.07}
+        ];
+
+    Catallena = [
+            {label:"Terran win over Zerg", value:14.26}, 
+            {label:"Terran win over Protoss", value:19.70}, 
+            {label:"Protoss win over Terran", value:20.27},
+            {label:"Protoss win over Zerg", value:17.31},
+            {label:"Zerg win over Terran", value:16.38},
+            {label:"Zerg win over Protoss", value:12.08}
+        ];
+
+    Interloper = [
+            {label:"Terran win over Zerg", value:14.36}, 
+            {label:"Terran win over Protoss", value:18.98}, 
+            {label:"Protoss win over Terran", value:20.00},
+            {label:"Protoss win over Zerg", value:17.02},
+            {label:"Zerg win over Terran", value:16.26},
+            {label:"Zerg win over Protoss", value:13.38}
+        ];
+
+    Mech = [
+            {label:"Terran win over Zerg", value:14.15}, 
+            {label:"Terran win over Protoss", value:20.63}, 
+            {label:"Protoss win over Terran", value:18.48},
+            {label:"Protoss win over Zerg", value:16.14},
+            {label:"Zerg win over Terran", value:16.88},
+            {label:"Zerg win over Protoss", value:13.72}
+        ]; 
+
+    Odyssey = [
+            {label:"Terran win over Zerg", value:13.91}, 
+            {label:"Terran win over Protoss", value:20.77}, 
+            {label:"Protoss win over Terran", value:18.62},
+            {label:"Protoss win over Zerg", value:16.17},
+            {label:"Zerg win over Terran", value:17.23},
+            {label:"Zerg win over Protoss", value:13.31}
+        ];        
             
             //To pick the view.
     d3.selectAll("input")
         .on("change", selectDataset);
     //Because the codes hate and wont initilize properly
-    change(Overall);
-    change(Overall);
-
+    change(Abyssal);
+    change(Abyssal);
+        //selects the dataset
     function selectDataset(){
         var value = this.value;
+        if (value == "Abyssal"){
+            change(Abyssal);
+        }
+        else if (value == "Acolyte"){
+            change(Acolyte);
+        }
+        else if (value == "Ascension"){
+            change(Ascension);
+        }
+        else if (value == "Catallena"){
+            change(Catallena);
+        }
+        else if (value == "Interloper"){
+            change(Interloper);
+        }
+        else if (value == "Mech"){
+            change(Mech);
+        }
+        else if (value == "Odyssey"){
+            change(Odyssey);
+        }
     }
 
     //Creates the view using D3 functions
@@ -163,7 +247,7 @@
                 return (d.data.label+": "+d.value+"%");
             });
 
-        function midAngle(d){
+        function AbyssalAngle(d){
             return d.startAngle + (d.endAngle - d.startAngle)/2;
         }
 
@@ -176,7 +260,7 @@
                 return function(t) {
                     var d2 = interpolate(t);
                     var pos = outerArc.centroid(d2);
-                    pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                    pos[0] = radius * (AbyssalAngle(d2) < Math.PI ? 1 : -1);
                     return "translate("+ pos +")";
                 };
             })
@@ -186,7 +270,7 @@
                 this._current = interpolate(0);
                 return function(t) {
                     var d2 = interpolate(t);
-                    return midAngle(d2) < Math.PI ? "start":"end";
+                    return AbyssalAngle(d2) < Math.PI ? "start":"end";
                 };
             })
             .text(function(d) {
@@ -212,7 +296,7 @@
                 return function(t) {
                     var d2 = interpolate(t);
                     var pos = outerArc.centroid(d2);
-                    pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                    pos[0] = radius * 0.95 * (AbyssalAngle(d2) < Math.PI ? 1 : -1);
                     return [arc.centroid(d2), outerArc.centroid(d2), pos];
                 };
             });

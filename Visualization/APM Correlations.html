@@ -2,16 +2,22 @@
 <meta charset="utf-8"/>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<title> Bot : Data Analysis of Professional Games </title>
 	</head>
    
-    <body>
+    <body >
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="APM Correlations.html">APM Correlations</a></li>
+			<li><a href="RaceWin.html">Race Win Overall</a></li>
+			<li><a href="TimWin.html">Race Win By Time</a></li>
+			<li><a href="MapWin.html">Race Win By Map</a></li>
+		</ul>
+		<br>
 		<header>
 			<h2> APM Correlations </h2>
-			<h3>Jason Lee&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;05/24/18</h3>
-        </header>
+		</header>
 		<br>
 		<div class = "container-fluid">
 			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
@@ -26,6 +32,53 @@
 	</body>
 
 	<script src='./scripts/d3.v4.min.js'></script>
-	<script src='./scripts/main.js'></script>
+	
+	<script>
+		d3.json("APM.json", function(error, data) {
+		if (error) throw error;
+		
+		x.domain([0, d3.max(data, function(d) { return d.count; })]);
+		y.domain(data.map(function(d) { return d.category; })).padding(0.1);
+
+		g.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(d3.axisBottom(x).ticks(5).tickFormat(function(d) { return parseInt(d); }).tickSizeInner([-height]));
+
+		g.append("g")
+			.attr("class", "y axis")
+			.call(d3.axisLeft(y));
+
+		g.selectAll(".bar")
+			.data(data)
+		.enter().append("rect")
+			.attr("class", "bar")
+			.attr("x", 0)
+			.attr("height", y.bandwidth())
+			.attr("y", function(d) { return y(d.category); })
+			.attr("width", function(d) { return x(d.count); })
+			.on("mousemove", function(d){
+				tooltip
+				.style("left", d3.event.pageX - 50 + "px")
+				.style("top", d3.event.pageY - 70 + "px")
+				.style("display", "inline-block")
+				.html((d.category) + "<br>" + (d.count));
+			})
+				.on("mouseout", function(d){ tooltip.style("display", "none");});
+	});
+
+	var svg = d3.select("svg"),
+		margin = {top: 20, right: 20, bottom: 30, left: 115},
+		width = +svg.attr("width") - margin.left - margin.right,
+		height = +svg.attr("height") - margin.top - margin.bottom;
+	
+	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+	
+	var x = d3.scaleLinear().range([0, width]);
+	var y = d3.scaleBand().range([height, 0]);
+
+	var g = svg.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	</script>
 
 </html>

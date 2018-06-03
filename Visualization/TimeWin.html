@@ -4,7 +4,7 @@
 <script src='./scripts/d3.v4.min.js'></script>
 <title> Bot : Data Analysis of Professional Games </title>
 
-<body>    
+<body>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="APM Correlations.html">APM Correlations</a></li>
@@ -14,13 +14,18 @@
     </ul>
     <br>
     <header>
-        <h2> Race Win Overall </h2>
+        <h2> Race Win By Time </h2>
     </header>
     <div class = "container-fluid">
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
         <br>
+        <form>
+            <label><input type="radio" name="dataset" id="dataset" checked="checked" value="Early" > Early < 7.75 mins </label>
+            <label><input type="radio" name="dataset" id="dataset" value="Mid"> Mid 7.75 min -> 14.5 mins</label>
+            <label><input type="radio" name="dataset" id="dataset" value="Late"> Late >14.5 mins</label>
+        </form>
         <svg height="650"></svg>
         <p> Anaysis of the data</p>
         <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
@@ -70,24 +75,51 @@
         .range(colorRange.range());
 
      //Data from RaceWinRate data processor.
-     Overall = [
-            {label:"Terran win over Zerg", value:13.88}, 
-            {label:"Terran win over Protoss", value:20.05}, 
-            {label:"Protoss win over Terran", value:19.25},
-            {label:"Protoss win over Zerg", value:16.67},
-            {label:"Zerg win over Terran", value:16.81},
-            {label:"Zerg win over Protoss", value:13.35}
+    Early = [
+            {label:"Terran win over Zerg", value:14.79}, 
+            {label:"Terran win over Protoss", value:20.02}, 
+            {label:"Protoss win over Terran", value:17.10},
+            {label:"Protoss win over Zerg", value:17.00},
+            {label:"Zerg win over Terran", value:18.64},
+            {label:"Zerg win over Protoss", value:12.45}
+        ];
+
+    Mid = [
+            {label:"Terran win over Zerg", value:11.76}, 
+            {label:"Terran win over Protoss", value:24.43}, 
+            {label:"Protoss win over Terran", value:19.80},
+            {label:"Protoss win over Zerg", value:14.00},
+            {label:"Zerg win over Terran", value:17.28},
+            {label:"Zerg win over Protoss", value:12.74}
+        ];
+
+    Late = [
+            {label:"Terran win over Zerg", value:15.34}, 
+            {label:"Terran win over Protoss", value:15.60}, 
+            {label:"Protoss win over Terran", value:20.35},
+            {label:"Protoss win over Zerg", value:19.13},
+            {label:"Zerg win over Terran", value:14.91},
+            {label:"Zerg win over Protoss", value:14.67}
         ];
             
             //To pick the view.
     d3.selectAll("input")
         .on("change", selectDataset);
     //Because the codes hate and wont initilize properly
-    change(Overall);
-    change(Overall);
-
+    change(Early);
+    change(Early);
+        //selects the dataset
     function selectDataset(){
         var value = this.value;
+        if (value == "Early"){
+            change(Early);
+        }
+        else if (value == "Mid"){
+            change(Mid);
+        }
+        else if (value == "Late"){
+            change(Late);
+        }
     }
 
     //Creates the view using D3 functions
@@ -220,6 +252,5 @@
         polyline.exit()
             .remove();
     };
-
     </script>
 </body>
