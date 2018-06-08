@@ -8,7 +8,6 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="APM Correlations.html">APM Correlations</a></li>
-        <li><a href="RaceWin.html">Race Win Overall</a></li>
         <li><a href="TimeWin.html">Race Win By Time</a></li>
         <li><a href="MapWin.html">Race Win By Map</a></li>
     </ul>
@@ -17,9 +16,8 @@
         <h2> Race Win By Map </h2>
     </header>
     <div class = "container-fluid">
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+        <h3>Setup of data</h3>
+        <p>Lastly, we will examine the data to see determine if there is a connection between race and map and if it affect on game wins. To review the data, we first grouped each datapoint by map. The data was processed by race win to generate multiple subsets. Then each subset was compared to the total amount of games played. In doing so, we expect a result 33% for each race. We expected the map to play a minimal factor in a race’s ability to win. However, the data provided a different insight.</p></p>
         <br>
         <form>
             <label><input type="radio" name="dataset" id="dataset" checked="checked" value="Abyssal" > Abyssal Reef </label>
@@ -31,12 +29,50 @@
             <label><input type="radio" name="dataset" id="dataset" value="Odyssey"> Odyssey LE</label>
         </form>
         <svg height="650"></svg>
-        <p> Anaysis of the data</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+        <h3> Analysis of the data</h3>
+        <p>
+            If we calculate the expected outcome minus the actual outcome over the total games played in each race per map, we can see the difference in race wins and an advantage or disadvantage per race.
+            <br>
+        <br>    For Abyssal Reef, the expected outcome of each race is 2943.66 games. <br><b>Zerg</b> falls short of the expected results by 107 games. (-3.63%)
+        <br>    <b>Terran</b> surpassed the expected results by 12 games. (+0.41%)
+        <br>    <b>Protoss</b> surpassed the expected results by 96 games. (+3.26%)
+        <br>
+        <br>
+        <br>    For Acolyte, the expected outcome of each race is 2861.33 games. <br><b>Zerg</b> falls short of the expected results by 55 games. (-1.92%)
+        <br>    <b>Terran</b> falls short the expected results by 57 games. (-1.99%)
+        <br>    <b>Protoss</b> surpassed the expected results by 112 games. (+3.91%)
+        <br>
+        <br>
+        <br>    For Ascension to Aiur, the expected outcome of each race is 3609.66 games. <br><b>Zerg</b> falls short of the expected results by 111 games. (-3.08%)
+        <br>    <b>Terran</b> surpassed the expected results by 65 games. (+1.80%)
+        <br>    <b>Protoss</b> surpassed the expected results by 46 games. (+1.27%)
+        <br>
+        <br>
+        <br>    For Catallena, the expected outcome of each race is 2196.33 games. <br><b>Zerg</b> falls short of the expected results by 80 games. (-3.64%)
+        <br>    <b>Terran</b> surpassed the expected results by 9 games. (+0.41%)
+        <br>    <b>Protoss</b> surpassed the expected results by 71 games. (+3.23%)
+        <br>
+        <br>
+        <br>    For Interloper, the expected outcome of each race is 3076 games. <br><b>Zerg</b> falls short of the expected results by 114 games. (-3.71%)
+        <br>    <b>Terran</b> performed as expected. (+0.00%)
+        <br>    <b>Protoss</b> surpassed the expected results by 114 games. (+3.71%)
+        <br>
+        <br>
+        <br>    For Mech Depot, the expected outcome of each race is 3111.33 games. <br><b>Zerg</b> falls short of the expected results by 85 games. (-2.73%)
+        <br>    <b>Terran</b> surpassed the expected results by 45 games. (+1.45%)
+        <br>    <b>Protoss</b> surpassed the expected results by 40 games. (+1.29%)
+        <br>
+        <br>
+        <br>    For Ascension to Aiur, the expected outcome of each race is 3630.33 games. <br><b>Zerg</b> falls short of the expected results by 102 games. (+2.81%)
+        <br>    <b>Terran</b> surpassed the expected results by 49 games. (+1.35%)
+        <br>    <b>Protoss</b> surpassed the expected results by 53 games. (+1.46%)
+        <p> in conclusion, we are able to determine that Zerg is least likely to win on the data set that we reviewed. While Protoss has the highest chance of winning in almost every map. Terran is balanced and has a slight advantage on some maps. </p>
 
+    </p>
     </div>
 <script>
+    //http://bl.ocks.org/juan-cb/1984c7f2b446fffeedde
+    //Modified the example to support D3V4 instead of V3 and to support our data 
     d3.select("input[value=\"total\"]").property("checked", true);
 
     var svg = d3.select("svg")
@@ -51,7 +87,7 @@
     svg.append("g")
         .attr("class", "lines");
 
-    var width = 1400,
+    var width = 1000,
         height = 644,
         radius = Math.min(width, height) / 2;
 

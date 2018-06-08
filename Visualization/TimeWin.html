@@ -8,31 +8,65 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="APM Correlations.html">APM Correlations</a></li>
-        <li><a href="RaceWin.html">Race Win Overall</a></li>
         <li><a href="TimeWin.html">Race Win By Time</a></li>
         <li><a href="MapWin.html">Race Win By Map</a></li>
     </ul>
     <br>
     <header>
-        <h2> Race Win By Time </h2>
+        <h2>Race Win By Time </h2>
     </header>
     <div class = "container-fluid">
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <br>
+        <h3>Setup of Data</h3>
+        <p>We also looked at how time affects each race throughout the gameplay. We separated the data according to the game duration. We estimated that each second in real time corresponds to approximately 16-22 in game steps. In our example, we used 22 steps per second. Early game is from 0-7.75 minutes. Middle game is from 7.75 minutes to 14.5 minutes. And Late game is from 14.5 minutes +. Each category type was then separated into different race vs race and calculated accordingly. The data is then compared against each other. The results can be seen in our interactive donut chart. </p>
+        <p>A quick analysis of the chart shows that Zerg appears to have the best advantage in the early game and worsens over the late game. While, Protoss starts off relatively normal and progressively increase their chance of winning as the game progresses. However, Terran has a consistent win rate throughout the three segments.</p>
         <form>
-            <label><input type="radio" name="dataset" id="dataset" checked="checked" value="Early" > Early < 7.75 mins </label>
-            <label><input type="radio" name="dataset" id="dataset" value="Mid"> Mid 7.75 min -> 14.5 mins</label>
-            <label><input type="radio" name="dataset" id="dataset" value="Late"> Late >14.5 mins</label>
+            <label><input type="radio" name="dataset" id="dataset" checked="checked" value="Early" > Early (<7.75 mins) </label>
+            <label><input type="radio" name="dataset" id="dataset" value="Mid"> Mid (7.75 min -> 14.5 mins)</label>
+            <label><input type="radio" name="dataset" id="dataset" value="Late"> Late (>14.5 mins)</label>
         </form>
+        
         <svg height="650"></svg>
-        <p> Anaysis of the data</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+        <p>This interested us to look deeper into the win rates with more detailed information. We took each game and separated by game type per race. The data from the API was provided in buckets and to make the data more manageable, we separated the data in to buckets of size 1000 game steps. We used the information to calculate each win for Zerg, Protoss, and Terran grouped into their respective bucket. The winnings for each bucket was then divided by the total amount of games played in those respective buckets and by the race of the player. To further examine the data, we plotted it onto a scatterplot and calculated for the linear regression and the r value.</p>
+
+        <h3>Analysis of the data</h3>
+        <p>A further analysis of the data shows the three races typically start at about the same advantage. As time goes on, from 2000 to 8000 steps, Zerg has a clear advantage. After 8000 steps, Zerg falls short and Terran takes control until 17000 steps. Zerg and Protoss have approximately the same win ratios from 17000 to 25000, where Protoss takes control of the game.</p>
+        <p>Our X value will be the number of steps taken (1000x) and our y value will be the win ratio. We see that the Protoss linear regression is y=0.000002x + 0.481531 with a correlation coefficient of .399. We start off lower than expected for the win ratio for Protoss. However, for every in game step, we generally see a 0.000002 increase in win percentage. For Zerg, we see the opposite y = 0.000001x + 0.529339. Zerg starts with a higher win ratio and decreases for every step. Generally, it is a slower decline than Protoss's growth. The r value is -0.2776. Finally, we take a look at Terrans win rate. Terran had a slope of 0 which we would expect no improvement or no decrease in performance. However, if we look at the graph, the plots fluctuate above and below the line y = 0.486227. This would explain the r value of -0.0131.</p>
+        <p>In hindsight, a logistic regression would have been better apporach for Terran. </p>
+        <iframe width="700" height="650" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=F9B88F85BF57944C%2111428&authkey=%21ALc8d6hVXlK6iYo&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+        <img src="Protoss.jpg" width="800" height="374" >
+        <p>Protoss: <br>
+            R Calculation<br>
+            y = 0.000002x + 0.481531<br>
+            r = ∑((X - My)(Y - Mx)) / √((SSx)(SSy)) <br>
+            r = 15955.084 / √((10412500000)(0.153)) = 0.3999 <br>
+            Meta Numerics (cross-check) <br>
+            r = 0.3999 <br>
+        </p>            
+        <img src="Terran.jpg" width="800" height="374" >
+        <p>Terran: <br>
+            R Calculation<br>
+            y = -0x + 0.486227
+            r = ∑((X - My)(Y - Mx)) / √((SSx)(SSy)) <br>
+            r = -370.069 / √((10412500000)(0.077)) = -0.0131 <br>
+            Meta Numerics (cross-check) <br>
+            r = -0.0131 <br>
+        </p>  
+        <img src="Zerg.jpg" width="800" height="374" >
+        <p>Zerg: <br>
+            R Calculation<br>
+            y = -0.000001x + 0.529339 <br>
+            r = ∑((X - My)(Y - Mx)) / √((SSx)(SSy)) <br>
+            r = -9957.267 / √((10412500000)(0.124)) = -0.2776 <br>
+            Meta Numerics (cross-check) <br>
+            r = -0.2776 <br>           
+        </p>  
+        <img src="Total.jpg" width="800" height="374" >
 
     </div>
+
 <script>
+    //http://bl.ocks.org/juan-cb/1984c7f2b446fffeedde
+    //Modified the example to support D3V4 instead of V3 and to support our data 
     d3.select("input[value=\"total\"]").property("checked", true);
 
     var svg = d3.select("svg")
@@ -47,7 +81,7 @@
     svg.append("g")
         .attr("class", "lines");
 
-    var width = 1400,
+    var width = 1000,
         height = 644,
         radius = Math.min(width, height) / 2;
 

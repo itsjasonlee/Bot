@@ -1,8 +1,8 @@
 body {
-    margin-left: 15%;
-      width: 85%;
+    margin-left: 10%;
+    margin-right: 10%;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      width: 1600px;
+      width: 1000px;
       height: 832px;
       position: relative;
 }
@@ -13,7 +13,7 @@ p {
     text-align: justify;
     text-justify: inter-word;
 }
-
+ 
 .bar {
     fill: #1e90ff;
 }
@@ -81,4 +81,11 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

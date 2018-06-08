@@ -6,79 +6,159 @@
 		<title> Bot : Data Analysis of Professional Games </title>
 	</head>
    
-    <body >
+    <body>
 		<ul>
 			<li><a href="index.html">Home</a></li>
 			<li><a href="APM Correlations.html">APM Correlations</a></li>
-			<li><a href="RaceWin.html">Race Win Overall</a></li>
-			<li><a href="TimWin.html">Race Win By Time</a></li>
+			<li><a href="TimeWin.html">Race Win By Time</a></li>
 			<li><a href="MapWin.html">Race Win By Map</a></li>
 		</ul>
 		<br>
 		<header>
 			<h2> APM Correlations </h2>
-		</header>
-		<br>
+        </header>
+        <script src='./scripts/d3.v3.js'></script>
+        <br>
+        <script>
+        </script>
 		<div class = "container-fluid">
-			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            <h3>Setup of Data</h3> 
+			<p> The difference in APM during a match in StarCraft is important to the outcome of the game. Generally, Blizzard's matchmaking algorithm matches players with the same skill levels and theoretically, their APM should be about the same.</p>
+			<p> However, this is not always the case. We wanted to look at the correlation between the differences in APM during matchmaking and the outcome of the game. We categorized each one to generate a normal distribution curve. In doing so, we can determine what percentage of the population has an APM difference. Overall, we determined that Blizzard's matchmaking system is generally pretty good with an APM difference of 44 in the middle of the graph.</p>
+			<p> For each category, we counted how many people won over how many total games played. We took the percentage that we will call the Win Ratio to see if it increases with each increasing category.</p>
+            <br> 
+			<svg></svg>			
 			<br> 
-			<svg width="1500" height="500"></svg>			
-			<br> 
-			<p> Anaysis of the data</p>
-			<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-		</div>
-	</body>
+			<h3> Analysis of the data</h3>
+			<p> We plotted the points onto each graph. This goes as follows: </p><p>1-3: 50.14%</p> <p>4-13: 52.07%</p><p>14-44: 57.19%</p><p>45-107: 63.29%</p> <p>108-210: 70.49%</p><p>211+: 83.29%</p> 
+            <p> We are able to determine that the larger the APM difference is, the higher chance that the player with the higher APM will win.</p>
+            <img src="APM.JPG" height="333"  class="center">
+            <p>
+                    r = 2380.547 / v((8959.533)(786.079)) = 0.897 <br>
+                    <br>
+                    Best-fit values	 <br>
+                    Slope	0.2657 ± 0.06546 <br>
+                    Y-intercept	47.25 ± 4.580 <br>
+                    X-intercept	-177.8 <br>
+                    1/Slope	3.764 <br>
+                     <br>
+                    95% Confidence Intervals	<br> 
+                    Slope	0.08398 to 0.4474<br>
+                    Y-intercept	34.53 to 59.96<br>
+                    X-intercept	-690.9 to -79.75<br>
+                     <br>
+                    Goodness of Fit	 <br>
+                    R square	0.8046<br>
+                    Sy.x	6.196<br>
+                     <br>
+                    Is slope significantly non-zero?	<br> 
+                    F	16.48<br>
+                    DFn,DFd	1,4<br>
+                    P Value	0.0154<br>
+                    Deviation from horizontal?	Significant<br>
+                     <br>
+                    Data	 <br>
+                    Number of XY pairs	6 <br>
+                    Equation	Y = 0.2657*X + 47.25<br>
+                    
+            </p>
+            <p> The X intercept is the APM difference category. The Y intercept is the percentage of win ratios associated with each group. Therefore the line of best fit is y= 0.2657x + 47.25. This correlations means for every percentage increase in the graph, the expected win ratios for the particular player will increase by .2657%. The correlation coefficient is .897. The high correlation between these two factors shows that an increase in APM difference between opponents may result in a higher chance of winning for that said opponent.</p>
+            <br>
+        </div>
+    </body>
 
-	<script src='./scripts/d3.v4.min.js'></script>
-	
 	<script>
-		d3.json("APM.json", function(error, data) {
-		if (error) throw error;
-		
-		x.domain([0, d3.max(data, function(d) { return d.count; })]);
-		y.domain(data.map(function(d) { return d.category; })).padding(0.1);
+        //https://bl.ocks.org/mbostock/7555321
+        var margin = {top: 80, right: 180, bottom: 80, left: 180},
+            width = 1000 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
 
-		g.append("g")
-			.attr("class", "x axis")
-			.attr("transform", "translate(0," + height + ")")
-			.call(d3.axisBottom(x).ticks(5).tickFormat(function(d) { return parseInt(d); }).tickSizeInner([-height]));
+        var x = d3.scale.ordinal()
+            .rangeRoundBands([0, width], .1, .3);
 
-		g.append("g")
-			.attr("class", "y axis")
-			.call(d3.axisLeft(y));
+        var y = d3.scale.linear()
+            .range([height, 0]);
 
-		g.selectAll(".bar")
-			.data(data)
-		.enter().append("rect")
-			.attr("class", "bar")
-			.attr("x", 0)
-			.attr("height", y.bandwidth())
-			.attr("y", function(d) { return y(d.category); })
-			.attr("width", function(d) { return x(d.count); })
-			.on("mousemove", function(d){
-				tooltip
-				.style("left", d3.event.pageX - 50 + "px")
-				.style("top", d3.event.pageY - 70 + "px")
-				.style("display", "inline-block")
-				.html((d.category) + "<br>" + (d.count));
-			})
-				.on("mouseout", function(d){ tooltip.style("display", "none");});
-	});
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
 
-	var svg = d3.select("svg"),
-		margin = {top: 20, right: 20, bottom: 30, left: 115},
-		width = +svg.attr("width") - margin.left - margin.right,
-		height = +svg.attr("height") - margin.top - margin.bottom;
-	
-	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-	
-	var x = d3.scaleLinear().range([0, width]);
-	var y = d3.scaleBand().range([height, 0]);
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(8, "A");
 
-	var g = svg.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-	</script>
+        var svg = d3.select("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        d3.tsv("APM.tsv", type, function(error, data) {
+            x.domain(data.map(function(d) { return d.name; }));
+            y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+            svg.append("text")
+                .attr("class", "title")
+                .attr("x", x(data[0].name))
+                .attr("y", -26)
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .selectAll(".tick text")
+                .call(wrap, x.rangeBand());
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+            svg.selectAll(".bar")
+                .data(data)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", function(d) { return x(d.name); })
+                .attr("width", x.rangeBand())
+                .attr("y", function(d) { return y(d.value); })
+                .attr("height", function(d) { return height - y(d.value); })
+                .on("mousemove", function(d){
+                        tooltip
+                        .style("left", d3.event.pageX - 50 + "px")
+                        .style("top", d3.event.pageY - 70 + "px")
+                        .style("display", "inline-block")
+                        .html((d.name) + "<br>" + (d.value));
+                    })
+                .on("mouseout", function(d){ tooltip.style("display", "none");});
+    });
+        function wrap(text, width) {
+        text.each(function() {
+            var text = d3.select(this),
+                words = text.text().split(/\s+/).reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1.1, // ems
+                y = text.attr("y"),
+                dy = parseFloat(text.attr("dy")),
+                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+            while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+            }
+            }
+        });
+        }
+        var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+
+        function type(d) {
+        d.value = +d.value;
+        return d;
+        }
+    </script>
 </html>
