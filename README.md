@@ -8,6 +8,5 @@
 4. Kishan Patel
 5. Federich Tsou
 
-### Task List
-- [ ] Write the report
-- [ ] Move the data into website
+Website:
+https://storage.googleapis.com/ecs170/index.html
